@@ -1,48 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <script type="text/javascript" src="<?= base_url() ?>assets/tinymce/tinymce.min.js"></script>
 
-</head>
-<body>
-  <textarea rows="25" id="post_content" name="post_content" class="form-control ckeditor"></textarea>
+      <!-- <div class="site-section-cover overlay inner-page bg-light" style="background-image: url('images/cargo_sea_big.jpg')" data-aos="fade"> -->
+      
+      <div class="container-fluid p-4" style="background-color: red">
+        <div class="container">
+          <div class="row">
+            <div class="col-7">
+              <h3 class="text-white pt-2">Peta Data Kabupaten</h3>
+            </div>
+            <div class="col-4">              
+              <select class="form-control" style="border:1px solid gray;" onchange="myfunction(this)">
+                <option value="peta_kabupaten">Peta Kabupaten</option>
+                <option value="peta_kecamatan">Peta Kecamatan</option>
+                <option value="peta_desa">Peta Desa</option>
+              </select>
+            </div>
+            <div class="col-1">              
+              <button style="margin-left: -15px;padding:  12px 18px" onclick="reloadfunc()"><span class="fas fa-sync-alt"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <br>
+
+            <br><br>
+            <p><iframe style="width: 100%; height: 520px; border: 0px;" src="https://bi.or.id/kab/" width="300" height="150"></iframe></p>
+            <p style="text-align: center;"><a href="https://bi.or.id/penduduk-miskin/" target="_blank" rel="noopener">Penduduk Miskin</a> | <a href="https://bi.or.id/basis-data-terpadu/" target="_blank" rel="noopener">Basis Data Terpadu</a> | <a href="https://bi.or.id/klaster-1/" target="_blank" rel="noopener">Klaster 1</a> | <a href="https://bi.or.id/klaster-2/" target="_blank" rel="noopener">Klaster 2</a> | <a href="https://bi.or.id/klaster-3/" target="_blank" rel="noopener">Klaster 3</a> | <a href="https://bi.or.id/indeks-kesejahteraan-rakyat/" target="_blank" rel="noopener">Indeks Kesejahteraan Rakyat</a> | PPLS 2011 | PPLS 2015</p>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+
 <script type="text/javascript">
-    tinymce.init({
-        selector: "#post_content",
-        plugins: [
-             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-             "searchreplace wordcount visualblocks visualchars code fullscreen",
-             "insertdatetime nonbreaking save table contextmenu directionality",
-             "emoticons template paste textcolor colorpicker textpattern"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image responsivefilemanager",
-        automatic_uploads: true,
-        image_advtab: true,
-        images_upload_url: "<?php echo base_url("CONTROLLER_UPLOAD")?>",
-        file_picker_types: 'image', 
-        paste_data_images:true,
-        relative_urls: false,
-        remove_script_host: false,
-          file_picker_callback: function(cb, value, meta) {
-             var input = document.createElement('input');
-             input.setAttribute('type', 'file');
-             input.setAttribute('accept', 'image/*');
-             input.onchange = function() {
-                var file = this.files[0];
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                   var id = 'post-image-' + (new Date()).getTime();
-                   var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                   var blobInfo = blobCache.create(id, file, reader.result);
-                   blobCache.add(blobInfo);
-                   cb(blobInfo.blobUri(), { title: file.name });
-                };
-             };
-             input.click();
-          }
-   });
+  function myfunction(id){
+    var idss = id.value;
+    window.location.replace("<?= base_url() ?>peta/"+idss+"");      
+  }
+  function reloadfunc(){
+   window.location.replace("<?= base_url() ?>"); 
+  }
 </script>
- 
-</body>
-</html>
