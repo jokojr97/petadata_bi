@@ -10,26 +10,24 @@ class Peta extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('_partial/header');
-		$this->load->view('peta');
-		$this->load->view('_partial/footer');
+		redirect('peta/peta_kabupaten','refresh');
 	}
 	public function peta_kabupaten()
 	{
 		$this->load->view('_partial/header');
-		$this->load->view('peta');
+		$this->load->view('peta_kabupaten');
 		$this->load->view('_partial/footer');
 	}
 	public function peta_kecamatan()
 	{
 		$this->load->view('_partial/header');
-		$this->load->view('peta');
+		$this->load->view('peta_kecamatan');
 		$this->load->view('_partial/footer');
 	}
 	public function peta_desa()
 	{
 		$this->load->view('_partial/header');
-		$this->load->view('peta');
+		$this->load->view('peta_desa');
 		$this->load->view('_partial/footer');
 	}
 }
